@@ -1,18 +1,11 @@
 import { useState } from "react"
-import { Keyboard, Pressable, Text, TextInput, View } from "react-native"
+import { Keyboard, Pressable, Text, View } from "react-native"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Header from './Header'
 import Footer from './Footer'
 import style from "../styles/style";
-import {
-    NBR_OF_DICES,
-    NBR_OF_THROWS,
-    MIN_SPOT,
-    MAX_SPOT,
-    BONUS_POINTS_LIMIT,
-    BONUS_POINTS
-} from '../constants/Game'
 import { Rules } from "../constants/Rules";
+import { TextInput } from "react-native-paper";
 
 export default Home = ({navigation}) => {
 
@@ -26,31 +19,32 @@ export default Home = ({navigation}) => {
         }
     }
 
-    return(
-        <>
-            <Header/>
-            <View>
-                <MaterialCommunityIcons name='information' size={90} color='green'/>
+    return(        
+        <View style={style.container}>
+            <Header/>       
+            <View style={style.innerview}>
                 {!hasPlayerName ? 
                     <>
-                        <Text>For Scoreboard enter your name:</Text>
-                        <TextInput onChangeText={setPlayerName} autoFocus={true}/>
+                        <MaterialCommunityIcons name='book-edit-outline' size={90} color='#F0681A'/>
+                        <Text style={style.textcolor}>For Scoreboard enter your name:</Text>
+                        <TextInput onChangeText={setPlayerName} autoFocus={true}/>                        
                         <Pressable onPress={()=> handlePlayerName(playerName)}>
-                            <Text>OK</Text>
+                            <Text style={style.textcolor}>OK</Text>
                         </Pressable>
                     </>
                     :
                     <>
-                        <Text>Rules of the game</Text>
+                        <MaterialCommunityIcons name='book-open-page-variant-outline' size={90} color='#F0681A'/>
+                        <Text style={style.textcolor}>Rules of the game</Text>
                         <Rules/>
-                        <Text>Good luck, {playerName}</Text>
+                        <Text style={style.textcolor}>Good luck, {playerName}</Text>
                         <Pressable onPress={()=> navigation.navigate('GameBoard', {player: playerName})}>
-                            <Text>PLAY</Text>
+                            <Text style={style.textcolor}>PLAY</Text>
                         </Pressable>
                     </>
                 }
-            </View>
+                </View>
             <Footer/>
-        </>
+            </View>        
     )
 }

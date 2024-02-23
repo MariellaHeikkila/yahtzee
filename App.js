@@ -35,8 +35,8 @@ export default function App() {
             // You can return any component that you like here!
             return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: '#F545EC',
-          tabBarInactiveTintColor: '#A0629D',
+          tabBarActiveTintColor: '#F0681A',
+          tabBarInactiveTintColor: '#C56B37',
         })}
       >
         <Tab.Screen name="Home" component={Home}

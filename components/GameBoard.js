@@ -228,11 +228,11 @@ export default GameBoard = ({navigation, route}) => {
     }
 
     function getDiceColor(i) {
-        return selectedDices[i] ? '#F545EC' : '#A0629D'
+        return selectedDices[i] ? '#C56B37' : '#F0681A'
     }
 
     function getDicePointsColor(i) {
-        return selectedDicePoints[i] && !gameEndStatus ? '#F545EC' : '#A0629D'
+        return selectedDicePoints[i] && !gameEndStatus ? '#C56B37' : '#F0681A'
     }
 
     const restartGame = () => {
@@ -256,35 +256,36 @@ export default GameBoard = ({navigation, route}) => {
     
     //gameStartStatus ei toimi vielä hyvin
     return(
-        <>        
+        <>   
+        <View style={style.container}>     
             <Header/>
-            <View>
-            <Text>gameboard will be here</Text>
+            <View style={style.innerview}>
+            <Text style={style.textcolor}>gameboard will be here</Text>
             {!gameStartStatus ? 
             <MaterialCommunityIcons name="dice-multiple"
             size={50}
-            color={'#F545EC'}
+            color={'#F0681A'}
             />
             :
             <Container fluid>
                 <Row>{dicesRow}</Row>
             </Container>}
-            <Text>Throws left: {nbrOfThrowsLeft}</Text>
-            <Text> {status}</Text>
+            <Text style={style.textcolor}>Throws left: {nbrOfThrowsLeft}</Text>
+            <Text style={style.textcolor}> {status}</Text>
             <Button 
                 style={style.buttons}
                 mode="elevated"
                 disabled={gameEndStatus}
                 onPress={()=>throwDices()}>THROW DICES</Button>            
             <Container fluid>
-                <Row>{pointsRow}</Row>
+                <Row >{pointsRow}</Row>
             </Container>
             <Container fluid>
                 <Row>{pointsToSelectRow}</Row>
             </Container>
             <View>
-                <Text>Your points are {totalPoints}.</Text>
-                <Text>{bonusPointStatus}</Text>
+                <Text style={style.textcolor}>Your points are {totalPoints}.</Text>
+                <Text style={style.textcolor}>{bonusPointStatus}</Text>
             </View>
             <Button 
                 style={style.buttons}
@@ -299,9 +300,10 @@ export default GameBoard = ({navigation, route}) => {
                 style={style.buttons}
                 mode="elevated"
                 onPress={()=> navigation.navigate('Home')}>CHANGE PLAYER</Button>  
-            <Text>player: {playerName}</Text>
+            <Text style={style.textcolor}>player: {playerName}</Text>
             </View>
-            <Footer/>        
+            <Footer/>  
+            </View>      
         </>
     )
 }

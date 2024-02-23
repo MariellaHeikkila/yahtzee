@@ -1,23 +1,33 @@
 import { StyleSheet } from 'react-native';
 
+const backgroundApp = '#332E2C'
+
+const secondary = '#C56B37'
+
+const secondarysecond = '#F0681A'
+
+const tertiary = '#9B6445'
+
+const textcolor = '#f5e8e3'
+
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: backgroundApp
   },
   header: {
     marginTop: 30,
     marginBottom: 15,
-    backgroundColor: 'skyblue',
+    backgroundColor: tertiary,
     flexDirection: 'row',
   },
   footer: {
     marginTop: 20,
-    backgroundColor: 'skyblue',
+    backgroundColor: tertiary,
     flexDirection: 'row'
   },
   title: {
-    color: '#fff',
+    color: textcolor,
     fontWeight: 'bold',
     flex: 1,
     fontSize: 23,
@@ -25,12 +35,25 @@ export default StyleSheet.create({
     margin: 10,
   },
   author: {
-    color: '#fff',
+    color: textcolor,
     fontWeight: 'bold',
     flex: 1,
     fontSize: 15,
     textAlign: 'center',
     margin: 10,
+  },
+  innerview: {    
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 15    
+  },
+  textcolor: {
+    
+    color: textcolor,
+  },
+  rulesText: {
+    color: textcolor,
+    marginTop: 5
   },
   gameboard: {
     backgroundColor: '#fff',
@@ -62,13 +85,13 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   buttonText: {
-    color:"#2B2B52",
+    color:'#332E2C',
     fontSize: 20
   },
   buttons: {
     marginHorizontal: 50,
     marginVertical: 20,
-    backgroundColor: '#f0e0ef',
+    backgroundColor: '#f5e8e3',
     color: 'white'
   }
 });
