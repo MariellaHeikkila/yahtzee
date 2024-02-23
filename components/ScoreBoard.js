@@ -43,23 +43,23 @@ export default ScoreBoard = ({navigation}) => {
     
     scores.sort((a,b) => b.points - a.points)
 
-    return(
-        <>        
+    return(          
+        <View style={style.container}>   
             <Header/>
-            <View>
-            <Text>SCOREBOARD</Text>
+            <View >
+            <Text style={style.textcolor}>SCOREBOARD</Text>
                 <View>
                 {scores.length === 0 ?
-                    <Text>Scoreboard is empty</Text>
+                    <Text style={style.textcolor}>Scoreboard is empty</Text>
                     :
                     scores.map((player, index) => (
                         index < MAX_NBR_SCOREBOARD_ROWS && 
                         <DataTable.Row key={player.key}>
-                        <DataTable.Cell><Text>{index + 1}.</Text></DataTable.Cell>
-                        <DataTable.Cell><Text>{player.name}</Text></DataTable.Cell>
-                        <DataTable.Cell><Text>{player.date}</Text></DataTable.Cell>
-                        <DataTable.Cell><Text>{player.time}</Text></DataTable.Cell>
-                        <DataTable.Cell><Text>{player.points}</Text></DataTable.Cell>
+                        <DataTable.Cell><Text style={style.textcolor}>{index + 1}.</Text></DataTable.Cell>
+                        <DataTable.Cell><Text style={style.textcolor}>{player.name}</Text></DataTable.Cell>
+                        <DataTable.Cell><Text style={style.textcolor}>{player.date}</Text></DataTable.Cell>
+                        <DataTable.Cell><Text style={style.textcolor}>{player.time}</Text></DataTable.Cell>
+                        <DataTable.Cell><Text style={style.textcolor}>{player.points}</Text></DataTable.Cell>
                         </DataTable.Row>
                     ))
                 }
@@ -71,7 +71,7 @@ export default ScoreBoard = ({navigation}) => {
                 mode="elevated"
                 onPress={() => clearScoreBoard()}>CLEAR SCOREBOARD</Button>                
             </View>
-            <Footer/>        
-        </>
+            <Footer/> 
+            </View>         
     )
 }

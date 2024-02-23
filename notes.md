@@ -25,3 +25,11 @@ https://react-native-async-storage.github.io/async-storage/docs/install/
 npm install @react-native-async-storage/async-storage
 
 npm install react-native-paper
+
+fonts: 
+
+https://docs.expo.dev/versions/latest/sdk/font/
+
+npm install expo-font
+
+npm install expo-splash-screen

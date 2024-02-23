@@ -27,10 +27,8 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   title: {
-    color: textcolor,
-    fontWeight: 'bold',
+    color: textcolor,    
     flex: 1,
-    fontSize: 23,
     textAlign: 'center',
     margin: 10,
   },
@@ -47,13 +45,24 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 15    
   },
-  textcolor: {
-    
+  inputText: {
+    backgroundColor: textcolor,
+    marginVertical: 5
+  },
+  titletexts: {
+   
+  },
+  textcolor: {    
     color: textcolor,
   },
   rulesText: {
     color: textcolor,
     marginTop: 5
+  },
+  pointsrowtext: {
+    color: textcolor,
+    textAlign: 'center',
+    marginBottom: 5
   },
   gameboard: {
     backgroundColor: '#fff',
@@ -92,6 +101,6 @@ export default StyleSheet.create({
     marginHorizontal: 50,
     marginVertical: 20,
     backgroundColor: '#f5e8e3',
-    color: 'white'
+    borderRadius: 5
   }
 });
