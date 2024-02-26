@@ -52,9 +52,9 @@ export default Home = ({navigation}) => {
                     :
                     <>
                         <MaterialCommunityIcons name='book-open-page-variant-outline' size={90} color='#F0681A'/>
-                        <Text style={style.textcolor}>Rules of the game</Text>
+                        <Text style={style.titletexts}>Rules of the game</Text>
                         <Rules/>
-                        <Text style={style.textcolor}>Good luck, {playerName}</Text>
+                        <Text style={style.titletexts}>Good luck, {playerName}</Text>
                         <Button 
                         textColor= {buttonTxtColor}
                         style={style.buttons}

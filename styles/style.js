@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 const backgroundApp = '#332E2C'
 
@@ -50,19 +52,26 @@ export default StyleSheet.create({
     marginVertical: 5
   },
   titletexts: {
-   
+   fontWeight: 'bold',
+   fontSize: width * 0.05,
+   textAlign: 'center',
+   color: textcolor,
   },
   textcolor: {    
     color: textcolor,
+    textAlign: 'center'
   },
   rulesText: {
     color: textcolor,
-    marginTop: 5
+    marginTop: 10
   },
   pointsrowtext: {
     color: textcolor,
     textAlign: 'center',
     marginBottom: 5
+  },
+  scoreboardheadertexts: {
+    color: textcolor,
   },
   gameboard: {
     backgroundColor: '#fff',
@@ -83,23 +92,13 @@ export default StyleSheet.create({
   flex: {
     flexDirection: "row"
   },
-  button: {
-    margin: 30,
-    flexDirection: "row",
-    padding: 10,
-    backgroundColor: "#73CED6",
-    width: 150,
-    borderRadius: 15,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   buttonText: {
     color:'#332E2C',
     fontSize: 20
   },
   buttons: {
     marginHorizontal: 50,
-    marginVertical: 20,
+    marginVertical: 10,
     backgroundColor: '#f5e8e3',
     borderRadius: 5
   }

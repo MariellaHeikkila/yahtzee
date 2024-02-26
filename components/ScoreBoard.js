@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 
 export default ScoreBoard = ({navigation}) => {
 
+
+
     const [scores, setScores] = useState([])
 
     useEffect(() =>{
@@ -47,10 +49,29 @@ export default ScoreBoard = ({navigation}) => {
         <View style={style.container}>   
             <Header/>
             <View >
-            <Text style={style.textcolor}>SCOREBOARD</Text>
+            <Text style={style.titletexts}>SCOREBOARD</Text>
+            <DataTable>
+                    <DataTable.Header>
+                        <DataTable.Title >
+                         <Text style={style.scoreboardheadertexts}>Ranking</Text>   
+                        </DataTable.Title>
+                        <DataTable.Title >
+                         <Text style={style.scoreboardheadertexts}>Player</Text>   
+                        </DataTable.Title>
+                        <DataTable.Title >
+                         <Text style={style.scoreboardheadertexts}>Date</Text>   
+                        </DataTable.Title>
+                        <DataTable.Title >
+                         <Text style={style.scoreboardheadertexts}>Clock</Text>   
+                        </DataTable.Title>
+                        <DataTable.Title >
+                         <Text style={style.scoreboardheadertexts}>Scores</Text>   
+                        </DataTable.Title>
+                    </DataTable.Header>
+                </DataTable>
                 <View>
                 {scores.length === 0 ?
-                    <Text style={style.textcolor}>Scoreboard is empty</Text>
+                    <Text style={style.textcolor}>Scoreboard is empty</Text>                    
                     :
                     scores.map((player, index) => (
                         index < MAX_NBR_SCOREBOARD_ROWS && 
@@ -65,12 +86,13 @@ export default ScoreBoard = ({navigation}) => {
                 }
                 </View>            
             </View>
+            {scores.length > 0 &&
             <View>
                 <Button 
                 style={style.buttons}
                 mode="elevated"
                 onPress={() => clearScoreBoard()}>CLEAR SCOREBOARD</Button>                
-            </View>
+            </View>}
             <Footer/> 
             </View>         
     )

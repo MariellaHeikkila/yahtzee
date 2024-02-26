@@ -7,6 +7,7 @@ import Home from './components/Home';
 import GameBoard from './components/GameBoard';
 import ScoreBoard from './components/ScoreBoard';
 
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
           },
           tabBarActiveTintColor: '#F0681A',
           tabBarInactiveTintColor: '#C56B37',
+          tabBarStyle: {backgroundColor: '#332E2C'}
         })}
       >
         <Tab.Screen name="Home" component={Home}

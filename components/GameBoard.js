@@ -26,7 +26,7 @@ export default GameBoard = ({navigation, route}) => {
     const [playerName, setPlayerName] = useState('') 
 
     const [nbrOfThrowsLeft, setNbrOfThrowsLeft] = useState(NBR_OF_THROWS)
-    const [status, setStatus] = useState('Throw dices')
+    const [status, setStatus] = useState('Throw dices.')
     const [bonusPointStatus, setBonusPointStatus] = useState(`You are ${BONUS_POINTS_LIMIT} points away from bonus`)
     const [gameEndStatus, setGameEndStatus] = useState(false)
     const [gameStartStatus, setGameStartStatus] = useState(false)
@@ -59,7 +59,7 @@ export default GameBoard = ({navigation, route}) => {
     useEffect(()=>{
         setNbrOfThrowsLeft(NBR_OF_THROWS)
         selectedDices.fill(false)
-        setStatus('Throw dices')
+        setStatus('Throw dices.')
         let totalPointsCounter = dicePointsTotal.reduce((sum, point)=>sum + point, 0)
         let pointsMissing= BONUS_POINTS_LIMIT - totalPointsCounter
         if (pointsMissing > 0) {
@@ -135,14 +135,16 @@ export default GameBoard = ({navigation, route}) => {
         if ( nbrOfThrowsLeft === 0) {
         let selectedPoints = [...selectedDicePoints]
         let points = [...dicePointsTotal]
+
         if(!selectedPoints[i]) {
             selectedPoints[i] = true
             let nbrOfDices = diceSpots.reduce((total, x) => (x === (i + 1) ? total + 1 : total), 0)
-            points[i] = nbrOfDices * (i + 1)
+            points[i] = nbrOfDices * (i + 1)            
         } else {
             setStatus('You already selected points for ' + (i + 1))
             return points[i]
         }
+
         setDicePointsTotal(points)
         setSelectedDicePoints(selectedPoints)
         return points[i]
@@ -212,7 +214,7 @@ export default GameBoard = ({navigation, route}) => {
         }
         setNbrOfThrowsLeft(prev => prev -1)
         setDiceSpots(spots)
-        setStatus('Select and throw dices again')
+        setStatus('Select and throw dices again.')
     }
 
     function getSpotTotal(i) {
@@ -240,7 +242,7 @@ export default GameBoard = ({navigation, route}) => {
     const restartGame = () => {
         setGameStartStatus(false)
         setGameEndStatus(false)
-        setStatus('Throw dices')
+        setStatus('Throw dices.')
         diceSpots.fill(0) 
         dicePointsTotal.fill(0)
         setTotalPoints(0)
@@ -256,11 +258,10 @@ export default GameBoard = ({navigation, route}) => {
         <>   
         <View style={style.container}>     
             <Header/>
-            <View style={style.innerview}>
-            
+            <View style={style.innerview}>            
             {!gameStartStatus ? 
             <>
-            <Text style={style.textcolor}>Start your game! </Text>
+            <Text style={style.titletexts}>Start your game! </Text>
             <MaterialCommunityIcons name="dice-multiple"
             size={60}
             color={'#F0681A'}
@@ -279,7 +280,7 @@ export default GameBoard = ({navigation, route}) => {
                 disabled={gameEndStatus}
                 onPress={()=>throwDices()}>THROW DICES</Button>
             <View>
-                <Text style={style.textcolor}>Your points are {totalPoints}.</Text>
+                <Text style={style.textcolor}>TOTAL:  {totalPoints}.</Text>
                 <Text style={style.textcolor}>{bonusPointStatus}</Text>
             </View>                
             <Container fluid>
@@ -287,13 +288,14 @@ export default GameBoard = ({navigation, route}) => {
             </Container>
             <Container fluid>
                 <Row>{pointsToSelectRow}</Row>
-            </Container>   
+            </Container> 
+            <Text style={style.textcolor}>Player: {playerName}</Text>  
+            {gameEndStatus &&
             <Button 
                 textColor= {buttonTxtColor}
                 style={style.buttons}
                 mode="elevated"
-                onPress={()=>restartGame()}>START AGAIN</Button>
-            <Text style={style.textcolor}>player: {playerName}</Text>
+                onPress={()=>restartGame()}>START AGAIN</Button>}            
             </View>
             <Footer/>  
             </View>      
