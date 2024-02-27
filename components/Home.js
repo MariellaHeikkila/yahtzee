@@ -6,6 +6,7 @@ import Footer from './Footer'
 import style from "../styles/style";
 import { Rules } from "../constants/Rules";
 import { Button, TextInput } from "react-native-paper";
+import { moderateScale } from '../constants/Metrics'
 
 
 export default Home = ({navigation}) => {
@@ -23,7 +24,6 @@ export default Home = ({navigation}) => {
     }
 
     const changePlayer = () => {
-        navigation.navigate('Home')
         setPlayerName('')
         setHasPlayerName(false)
         navigation.navigate('Home')
@@ -35,8 +35,8 @@ export default Home = ({navigation}) => {
             <View style={style.innerview}>
                 {!hasPlayerName ? 
                     <>
-                        <MaterialCommunityIcons name='book-edit-outline' size={90} color='#F0681A'/>
-                        <Text style={style.textcolor}>For Scoreboard enter your name:</Text>
+                        <MaterialCommunityIcons name='book-edit-outline' size={moderateScale(80)} color='#F0681A'/>
+                        <Text style={style.titletexts}>For Scoreboard enter your name:</Text>
                         <TextInput 
                         onChangeText={setPlayerName} 
                         autoFocus={true}
@@ -51,7 +51,7 @@ export default Home = ({navigation}) => {
                     </>
                     :
                     <>
-                        <MaterialCommunityIcons name='book-open-page-variant-outline' size={90} color='#F0681A'/>
+                        <MaterialCommunityIcons name='book-open-page-variant-outline' size={moderateScale(80)} color='#F0681A'/>
                         <Text style={style.titletexts}>Rules of the game</Text>
                         <Rules/>
                         <Text style={style.titletexts}>Good luck, {playerName}</Text>
@@ -60,11 +60,11 @@ export default Home = ({navigation}) => {
                         style={style.buttons}
                         mode="elevated"
                         onPress={()=> navigation.navigate('GameBoard', {player: playerName})}>PLAY</Button>
-                        <Button 
+                        {/* <Button 
                         textColor= {buttonTxtColor}
                         style={style.buttons}
                         mode="elevated"
-                        onPress={()=> changePlayer()}>CHANGE PLAYER</Button>  
+                        onPress={()=> changePlayer()}>CHANGE PLAYER</Button>   */}
                     </>
                 }
                 </View>

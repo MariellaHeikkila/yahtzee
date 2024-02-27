@@ -1,30 +1,28 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { horizontalScale, verticalScale, moderateScale } from '../constants/Metrics'
 
 const { width, height } = Dimensions.get('window');
 
 const backgroundApp = '#332E2C'
-
 const secondary = '#C56B37'
-
 const secondarysecond = '#F0681A'
-
 const tertiary = '#9B6445'
-
 const textcolor = '#f5e8e3'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: backgroundApp
+    backgroundColor: backgroundApp,
+    height: verticalScale(70),
+    width: horizontalScale(380),
   },
   header: {
-    marginTop: 30,
-    marginBottom: 15,
+    height: verticalScale(55),
     backgroundColor: tertiary,
     flexDirection: 'row',
   },
   footer: {
-    marginTop: 20,
+    height: verticalScale(40),
     backgroundColor: tertiary,
     flexDirection: 'row'
   },
@@ -32,38 +30,42 @@ export default StyleSheet.create({
     color: textcolor,    
     flex: 1,
     textAlign: 'center',
-    margin: 10,
+    fontSize: moderateScale(23),
   },
   author: {
     color: textcolor,
     fontWeight: 'bold',
     flex: 1,
-    fontSize: 15,
+    fontSize: moderateScale(14),
     textAlign: 'center',
-    margin: 10,
+    margin: moderateScale(4),
   },
   innerview: {    
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 15    
+    marginVertical: verticalScale(10)   
   },
   inputText: {
     backgroundColor: textcolor,
-    marginVertical: 5
+    width: horizontalScale(200)
   },
   titletexts: {
    fontWeight: 'bold',
-   fontSize: width * 0.05,
+   fontSize: moderateScale(19),
    textAlign: 'center',
    color: textcolor,
+   marginVertical: horizontalScale(5)
   },
   textcolor: {    
     color: textcolor,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginVertical: horizontalScale(5)
   },
   rulesText: {
     color: textcolor,
-    marginTop: 10
+    textAlign: 'left',
+    marginTop: 10,
+    marginHorizontal: horizontalScale(10)
   },
   pointsrowtext: {
     color: textcolor,
@@ -73,32 +75,18 @@ export default StyleSheet.create({
   scoreboardheadertexts: {
     color: textcolor,
   },
-  gameboard: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  gameinfo: {
-    backgroundColor: '#fff',
-    textAlign: 'center',
-    justifyContent: 'center',
-    fontSize: 20,
-    marginTop: 10
-  },
-  row: {
-    marginTop: 20,
-    padding: 10
-  },
-  flex: {
-    flexDirection: "row"
+  scoreboard: {
+    flex: 1,
+    backgroundColor: backgroundApp
   },
   buttonText: {
     color:'#332E2C',
     fontSize: 20
   },
   buttons: {
-    marginHorizontal: 50,
-    marginVertical: 10,
+    width: horizontalScale(200),
+    marginVertical: verticalScale(20),
+    marginHorizontal: horizontalScale(20),
     backgroundColor: '#f5e8e3',
     borderRadius: 5
   }

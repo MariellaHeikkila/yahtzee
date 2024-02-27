@@ -16,6 +16,7 @@ import {
 } from '../constants/Game'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button } from "react-native-paper";
+import { moderateScale, verticalScale } from '../constants/Metrics'
 
 let board = []
 
@@ -80,7 +81,7 @@ export default GameBoard = ({navigation, route}) => {
     useEffect(() => {
         if (gameEndStatus) {
             savePlayerPoints()
-            setStatus("Game over. All points selected.")
+            setStatus("GAME OVER. All points selected.")
         }
     },[gameEndStatus])
 
@@ -95,7 +96,7 @@ export default GameBoard = ({navigation, route}) => {
                     <MaterialCommunityIcons
                     name={board[dice]}
                     key={'dice' + dice}
-                    size={50}
+                    size={moderateScale(50)}
                     color={getDiceColor(dice)}
                     />
                 </Pressable>
@@ -123,7 +124,7 @@ export default GameBoard = ({navigation, route}) => {
                     <MaterialCommunityIcons
                     name={'numeric-' + (diceButton + 1) + '-circle'}
                     key={'buttonsRow' + diceButton}
-                    size={35}
+                    size={moderateScale(35)}
                     color={getDicePointsColor(diceButton)}
                     />
                 </Pressable>
@@ -153,6 +154,7 @@ export default GameBoard = ({navigation, route}) => {
             setStatus('Throw ' + NBR_OF_THROWS + ' times before setting points')
         }
     }
+      
 
     //scoreboard points
     const savePlayerPoints = async() => {
@@ -232,11 +234,11 @@ export default GameBoard = ({navigation, route}) => {
     }
 
     function getDiceColor(i) {
-        return selectedDices[i] ? '#C56B37' : '#F0681A'
+        return selectedDices[i] ? '#F0681A' : '#C56B37'
     }
 
     function getDicePointsColor(i) {
-        return selectedDicePoints[i] && !gameEndStatus ? '#C56B37' : '#F0681A'
+        return selectedDicePoints[i] && !gameEndStatus ? '#F0681A' : '#C56B37'
     }
 
     const restartGame = () => {
@@ -263,13 +265,13 @@ export default GameBoard = ({navigation, route}) => {
             <>
             <Text style={style.titletexts}>Start your game! </Text>
             <MaterialCommunityIcons name="dice-multiple"
-            size={60}
+            size={moderateScale(80)}
             color={'#F0681A'}
             />
             </>
             :
             <Container fluid>
-                <Row>{dicesRow}</Row>
+                <Row style={{marginTop: verticalScale(5)}}>{dicesRow}</Row>
             </Container>}
             <Text style={style.textcolor}>Throws left: {nbrOfThrowsLeft}</Text>
             <Text style={style.textcolor}> {status}</Text>
@@ -289,7 +291,7 @@ export default GameBoard = ({navigation, route}) => {
             <Container fluid>
                 <Row>{pointsToSelectRow}</Row>
             </Container> 
-            <Text style={style.textcolor}>Player: {playerName}</Text>  
+            <Text style={style.titletexts}>Player: {playerName}</Text>  
             {gameEndStatus &&
             <Button 
                 textColor= {buttonTxtColor}

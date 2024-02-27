@@ -6,11 +6,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MAX_NBR_SCOREBOARD_ROWS, SCOREBOARD_KEY } from "../constants/Game";
 import { Button, DataTable, Text } from "react-native-paper";
 import { useEffect, useState } from "react";
+import { verticalScale } from "../constants/Metrics";
 
 
 export default ScoreBoard = ({navigation}) => {
 
-
+    const buttonTxtColor = '#9B6445'
 
     const [scores, setScores] = useState([])
 
@@ -46,10 +47,10 @@ export default ScoreBoard = ({navigation}) => {
     scores.sort((a,b) => b.points - a.points)
 
     return(          
-        <View style={style.container}>   
+        <View style={style.scoreboard}>   
             <Header/>
             <View >
-            <Text style={style.titletexts}>SCOREBOARD</Text>
+            <Text style={[style.titletexts, {marginVertical: verticalScale(15)}]}>SCOREBOARD</Text>
             <DataTable>
                     <DataTable.Header>
                         <DataTable.Title >
@@ -71,7 +72,7 @@ export default ScoreBoard = ({navigation}) => {
                 </DataTable>
                 <View>
                 {scores.length === 0 ?
-                    <Text style={style.textcolor}>Scoreboard is empty</Text>                    
+                    <Text style={[style.textcolor, {marginVertical: verticalScale(60)}]}>Scoreboard is empty</Text>                    
                     :
                     scores.map((player, index) => (
                         index < MAX_NBR_SCOREBOARD_ROWS && 
@@ -87,8 +88,9 @@ export default ScoreBoard = ({navigation}) => {
                 </View>            
             </View>
             {scores.length > 0 &&
-            <View>
+            <View style={[style.innerview, {marginVertical: verticalScale(10)}]}>
                 <Button 
+                textColor= {buttonTxtColor}
                 style={style.buttons}
                 mode="elevated"
                 onPress={() => clearScoreBoard()}>CLEAR SCOREBOARD</Button>                
