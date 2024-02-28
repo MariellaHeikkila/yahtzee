@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Keyboard, Pressable, Text, View } from "react-native"
+import { Keyboard, Text, View } from "react-native"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Header from './Header'
 import Footer from './Footer'
@@ -7,7 +7,6 @@ import style from "../styles/style";
 import { Rules } from "../constants/Rules";
 import { Button, TextInput } from "react-native-paper";
 import { moderateScale } from '../constants/Metrics'
-
 
 export default Home = ({navigation}) => {
 
@@ -21,12 +20,6 @@ export default Home = ({navigation}) => {
             setHasPlayerName(true)
             Keyboard.dismiss()
         }
-    }
-
-    const changePlayer = () => {
-        setPlayerName('')
-        setHasPlayerName(false)
-        navigation.navigate('Home')
     }
 
     return(        
@@ -60,11 +53,6 @@ export default Home = ({navigation}) => {
                         style={style.buttons}
                         mode="elevated"
                         onPress={()=> navigation.navigate('GameBoard', {player: playerName})}>PLAY</Button>
-                        {/* <Button 
-                        textColor= {buttonTxtColor}
-                        style={style.buttons}
-                        mode="elevated"
-                        onPress={()=> changePlayer()}>CHANGE PLAYER</Button>   */}
                     </>
                 }
                 </View>

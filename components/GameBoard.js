@@ -61,14 +61,14 @@ export default GameBoard = ({navigation, route}) => {
         setNbrOfThrowsLeft(NBR_OF_THROWS)
         selectedDices.fill(false)
         setStatus('Throw dices.')
-        let totalPointsCounter = dicePointsTotal.reduce((sum, point)=>sum + point, 0)
-        let pointsMissing= BONUS_POINTS_LIMIT - totalPointsCounter
-        if (pointsMissing > 0) {
-            setTotalPoints(totalPointsCounter)
-            setBonusPointStatus(`You are ${pointsMissing} points away from bonus`);
+        let countingTotalPoints = dicePointsTotal.reduce((sum, point)=>sum + point, 0)
+        let pointsToGetBonus= BONUS_POINTS_LIMIT - countingTotalPoints
+        if (pointsToGetBonus > 0) {
+            setTotalPoints(countingTotalPoints)
+            setBonusPointStatus(`You are ${pointsToGetBonus} points away from bonus`);
         }
         else{
-            const newTotalPoints = totalPointsCounter + BONUS_POINTS;
+            const newTotalPoints = countingTotalPoints + BONUS_POINTS;
             setTotalPoints(newTotalPoints)
             setBonusPointStatus(`Congrats! Bonus points (50) added`);
         }
@@ -153,8 +153,7 @@ export default GameBoard = ({navigation, route}) => {
         else {
             setStatus('Throw ' + NBR_OF_THROWS + ' times before setting points')
         }
-    }
-      
+    }      
 
     //scoreboard points
     const savePlayerPoints = async() => {
@@ -169,7 +168,7 @@ export default GameBoard = ({navigation, route}) => {
             name: playerName,
             date: date, 
             time: currentTime,
-            points: totalPoints // change this to all points (+bonus if there is)
+            points: totalPoints 
         }
         try {
             const newScore = [...scores, playerPoints]
@@ -193,9 +192,8 @@ export default GameBoard = ({navigation, route}) => {
         }
     }
 
-    //tänne jotain vielä...
     const throwDices = () => {
-        setGameStartStatus(true) //ei toimi vielä hyvin
+        setGameStartStatus(true) 
         if (nbrOfThrowsLeft === 0 && !gameEndStatus) {
             setStatus('Select your points before the next throw.')
             return 1
@@ -250,12 +248,11 @@ export default GameBoard = ({navigation, route}) => {
         setTotalPoints(0)
         selectedDices.fill(0)
         selectedDicePoints.fill(0)
-        totalPointsCounter = 0
-        pointsMissing = 0
+        countingTotalPoints = 0
+        pointsToGetBonus = 0
         setBonusPointStatus(`You are ${BONUS_POINTS_LIMIT} points away from bonus`)
     }
     
-    //gameStartStatus ei toimi vielä hyvin
     return(
         <>   
         <View style={style.container}>     

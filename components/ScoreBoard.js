@@ -8,7 +8,6 @@ import { Button, DataTable, Text } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { verticalScale } from "../constants/Metrics";
 
-
 export default ScoreBoard = ({navigation}) => {
 
     const buttonTxtColor = '#9B6445'
@@ -23,7 +22,6 @@ export default ScoreBoard = ({navigation}) => {
     }, [navigation])
 
     const getScoreBoardData = async() => {
-
         try {
             const jsonValue = await AsyncStorage.getItem(SCOREBOARD_KEY)
             if (jsonValue !== null) {
@@ -94,7 +92,8 @@ export default ScoreBoard = ({navigation}) => {
                 style={style.buttons}
                 mode="elevated"
                 onPress={() => clearScoreBoard()}>CLEAR SCOREBOARD</Button>                
-            </View>}
+            </View>
+            }
             <Footer/> 
             </View>         
     )

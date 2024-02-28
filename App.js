@@ -1,5 +1,3 @@
-
-import {  Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -7,7 +5,6 @@ import Home from './components/Home';
 import GameBoard from './components/GameBoard';
 import ScoreBoard from './components/ScoreBoard';
 import { moderateScale, verticalScale } from './constants/Metrics'
-
 
 const Tab = createBottomTabNavigator();
 
@@ -38,20 +35,17 @@ export default function App() {
               ? 'view-list' 
               : 'view-list-outline';
             }
-
             // You can return any component that you like here!
             return <MaterialCommunityIcons name={iconName} size={moderateScale(30)} color={color} />;
           },
           tabBarActiveTintColor: '#F0681A',
-          tabBarInactiveTintColor: '#C56B37',
+          tabBarInactiveTintColor: '#c98660',
           tabBarStyle: {
             backgroundColor: '#332E2C', 
             height: verticalScale(70),
             },
-          tabBarLabelStyle: {fontSize: moderateScale(14)}
-          
-        })}
-        
+          tabBarLabelStyle: {fontSize: moderateScale(14)}          
+        })}        
       >
         <Tab.Screen name="Home" component={Home}
          options={{tabBarStyle: {display: 'none'}}}
